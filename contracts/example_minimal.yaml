@@ -1,7 +1,12 @@
-# Minimale Q4 Runtime-Deklaration
-# Aktiviert Q4-Protokoll mit Standard-Schwellenwerten.
-# Für Repos die nur den Zustandsraum nutzen, ohne NATS-Kopplung.
+# Minimal Q4 Runtime Declaration -- sa-sv-duality (GenesisAeon Package 36)
+# Activates Q4 protocol with default thresholds.
+# For repos using only the state space, without NATS coupling.
 
 runtime:
   version: "1.0"
   protocol: q4
+
+  package:
+    id: 36
+    name: "sa-sv-duality"
+    zenodo: "10.5281/zenodo.17472834"

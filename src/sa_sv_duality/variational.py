@@ -16,12 +16,8 @@ from __future__ import annotations
 
 import math
 
-import numpy as np
-from numpy.typing import NDArray
-
 from .action_entropy import ActionEntropy, UTACParams
 from .volume_entropy import VolumeEntropy
-from .constants import SIGMA_UTAC
 
 
 class VariationalSolver:
@@ -124,17 +120,21 @@ class VariationalSolver:
 
         while current != end_bits:
             # Hamming-1 neighbours
-            neighbours = [current ^ (1 << b) for b in range(4) if (current ^ (1 << b)) not in visited]
+            neighbours = [
+                current ^ (1 << b)
+                for b in range(4)
+                if (current ^ (1 << b)) not in visited
+            ]
             if not neighbours:
                 break
 
-            # score = S_A_i - lambda * S_V_i  (minimise)
-            lambda_ = self.optimal_lambda()
+            # score = S_A_i - lam * S_V_i  (minimise)
+            lam = self.optimal_lambda()
 
-            def score(n: int) -> float:
+            def score(n: int, _lam: float = lam) -> float:
                 sa = all_q4_sa.get(n, 0.0)
                 sv = all_q4_sv.get(n, 0.0)
-                return sa - lambda_ * sv
+                return sa - _lam * sv
 
             best = min(neighbours, key=score)
             path.append(best)

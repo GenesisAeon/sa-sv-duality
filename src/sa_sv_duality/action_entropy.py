@@ -12,8 +12,8 @@ Low  S_A → reversible, efficient transition (near equilibrium).
 from __future__ import annotations
 
 import math
-from dataclasses import dataclass, field
-from typing import Callable, Sequence
+from collections.abc import Sequence
+from dataclasses import dataclass
 
 import numpy as np
 from numpy.typing import NDArray
@@ -90,7 +90,11 @@ class ActionEntropy:
             S_A ≥ 0: total action entropy.
         """
         H_arr: NDArray[np.float64] = np.asarray(trajectory, dtype=float)
-        t_arr = np.arange(len(H_arr), dtype=float) if times is None else np.asarray(times, dtype=float)
+        t_arr = (
+            np.arange(len(H_arr), dtype=float)
+            if times is None
+            else np.asarray(times, dtype=float)
+        )
 
         if len(H_arr) != len(t_arr):
             raise ValueError("trajectory and times must have the same length")
@@ -103,9 +107,9 @@ class ActionEntropy:
                 raise ValueError("gamma_series must match trajectory length")
 
         rates = np.array(
-            [self.entropy_rate(float(h), float(g)) for h, g in zip(H_arr, g_arr)]
+            [self.entropy_rate(float(h), float(g)) for h, g in zip(H_arr, g_arr, strict=False)]
         )
-        _trapz = getattr(np, "trapezoid", None) or getattr(np, "trapz")
+        _trapz = getattr(np, "trapezoid", None) or np.trapz
         return float(_trapz(rates, t_arr))
 
     # ------------------------------------------------------------------

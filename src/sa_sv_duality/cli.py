@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import sys
 from typing import Annotated
 
 import typer
@@ -12,9 +11,9 @@ from rich.panel import Panel
 from rich.table import Table
 
 from . import __version__
-from .system import SAVDuality
 from .benchmark import run_benchmarks
 from .constants import GAMMA_UNIVERSAL, SIGMA_UTAC
+from .system import SAVDuality
 
 app = typer.Typer(
     name="sav",

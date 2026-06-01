@@ -19,8 +19,6 @@ import math
 from dataclasses import dataclass, field
 from typing import Any
 
-import numpy as np
-
 
 @dataclass(order=True)
 class _PQItem:
@@ -76,7 +74,7 @@ class SAVRouter:
             self._graph.setdefault(dst, []).append((src, S_A, S_V))
 
     @classmethod
-    def from_q4_adjacency(cls, lambda_: float = 1.0) -> "SAVRouter":
+    def from_q4_adjacency(cls, lambda_: float = 1.0) -> SAVRouter:
         """Build a router on the 16 Q4 states connected by Hamming-1 edges.
 
         Edge weights come from the S_A / S_V Q4 map.

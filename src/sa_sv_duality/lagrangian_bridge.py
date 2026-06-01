@@ -21,7 +21,7 @@ from dataclasses import dataclass
 import numpy as np
 from numpy.typing import NDArray
 
-from .constants import PHI, SIGMA_PHI, SIGMA_UTAC
+from .constants import SIGMA_PHI, SIGMA_UTAC
 
 
 @dataclass
@@ -165,7 +165,9 @@ class LagrangianBridge:
         omega_sq = 1.0 / max(self.K, 1e-9)
         dL_dH = np.where(
             H > 0,
-            self.alpha * (np.log(np.clip(H / self.K, 1e-12, None)) + 1.0) + self.beta - omega_sq * H,
+            self.alpha * (np.log(np.clip(H / self.K, 1e-12, None)) + 1.0)
+            + self.beta
+            - omega_sq * H,
             0.0,
         )
 

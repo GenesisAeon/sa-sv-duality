@@ -3,23 +3,23 @@
 from __future__ import annotations
 
 import math
-import pytest
+
 import numpy as np
+import pytest
 
 from sa_sv_duality import (
     ActionEntropy,
-    VolumeEntropy,
     DualityRelation,
     LagrangianBridge,
-    VariationalSolver,
     Q4SAVMap,
-    SAVRouter,
     SAVDuality,
+    SAVRouter,
+    VariationalSolver,
+    VolumeEntropy,
 )
 from sa_sv_duality.action_entropy import UTACParams, utac_entropy_rate
-from sa_sv_duality.constants import PHI, SIGMA_UTAC, GAMMA_UNIVERSAL, Q4_N_STATES
 from sa_sv_duality.benchmark import run_benchmarks
-
+from sa_sv_duality.constants import GAMMA_UNIVERSAL, PHI, Q4_N_STATES, SIGMA_UTAC
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
@@ -217,7 +217,7 @@ def test_q4_state_15_maximal_sv():
     q4 = Q4SAVMap(n_steps=50)
     states = q4.get()
     # 1111 → 4 active bits → S_V = ln(5) (maximum)
-    assert states[15].S_V == pytest.approx(math.log(5), abs=1e-9)
+    assert pytest.approx(math.log(5), abs=1e-9) == states[15].S_V
     assert states[15].n_active == 4
 
 
@@ -313,7 +313,7 @@ def test_system_q4_entropy_map():
     system = SAVDuality()
     q4 = system.q4_entropy_map()
     assert len(q4) == 16
-    for sid, (sa, sv) in q4.items():
+    for _sid, (sa, sv) in q4.items():
         assert sa >= 0.0
         assert sv >= 0.0
 

@@ -15,16 +15,14 @@ Active bits that are *coherence-breaking* (E, P) raise S_A (more costly).
 
 from __future__ import annotations
 
-import math
 from dataclasses import dataclass
-from typing import Iterator
 
 import numpy as np
 from numpy.typing import NDArray
 
 from .action_entropy import ActionEntropy, UTACParams
+from .constants import Q4_N_STATES
 from .volume_entropy import VolumeEntropy
-from .constants import SIGMA_UTAC, Q4_N_STATES
 
 # Per-bit gamma contributions (from CREP Atlas, P17-P38)
 _BIT_GAMMA: dict[int, float] = {

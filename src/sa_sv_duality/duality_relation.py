@@ -22,8 +22,8 @@ import numpy as np
 from numpy.typing import NDArray
 
 from .action_entropy import ActionEntropy, UTACParams
-from .volume_entropy import VolumeEntropy
 from .constants import SAV_CONSTANT
+from .volume_entropy import VolumeEntropy
 
 
 @dataclass

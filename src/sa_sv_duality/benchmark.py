@@ -63,7 +63,7 @@ class BenchmarkReport:
 
     def summary(self) -> str:
         lines = [
-            f"S_A/S_V Duality Benchmark — Package 36",
+            "S_A/S_V Duality Benchmark — Package 36",
             f"  Passed:  {len(self.passed)}",
             f"  Failed:  {len(self.failed)}",
             f"  Skipped: {len(self.skipped)}",
@@ -76,11 +76,10 @@ class BenchmarkReport:
 def run_benchmarks(fast: bool = False) -> BenchmarkReport:
     """Run all S_A/S_V benchmarks and return a report."""
     from .action_entropy import ActionEntropy, UTACParams
-    from .volume_entropy import VolumeEntropy
     from .duality_relation import DualityRelation
+    from .network_routing import SAVRouter
     from .q4_sav_map import Q4SAVMap
     from .variational import VariationalSolver
-    from .network_routing import SAVRouter
 
     passed: list[str] = []
     failed: list[str] = []
@@ -139,13 +138,14 @@ def run_benchmarks(fast: bool = False) -> BenchmarkReport:
         skipped.append("lagrangian_consistency (fast mode)")
     else:
         try:
-            from .lagrangian_bridge import LagrangianBridge
             import numpy as np
+
+            from .lagrangian_bridge import LagrangianBridge
 
             lb = LagrangianBridge()
             sa_obj = ActionEntropy(params)
             t, H = sa_obj.generate_trajectory(T=T)
-            dH = np.gradient(H, t)
+            np.gradient(H, t)
             residuals = lb.euler_lagrange_residual(H.tolist(), t.tolist())
             # Near fixed point (last 20% of trajectory) residual should be small
             tail = residuals[int(0.8 * len(residuals)):]

@@ -14,12 +14,12 @@ over the trajectory.
 from __future__ import annotations
 
 import math
-from typing import Sequence
+from collections.abc import Sequence
 
 import numpy as np
 from numpy.typing import NDArray
 
-from .constants import Q4_BITS, Q4_N_STATES
+from .constants import Q4_N_STATES
 
 
 class VolumeEntropy:

@@ -12,22 +12,24 @@ from __future__ import annotations
 
 import math
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Any
 
 import numpy as np
 
 from .action_entropy import ActionEntropy, UTACParams
-from .volume_entropy import VolumeEntropy
-from .duality_relation import DualityRelation, DualityResult
-from .lagrangian_bridge import LagrangianBridge, LagrangianState
-from .variational import VariationalSolver
-from .q4_sav_map import Q4SAVMap, Q4EntropyState
-from .network_routing import SAVRouter, RoutingResult
 from .constants import (
-    PHI, SIGMA_PHI, SIGMA_UTAC, GAMMA_UNIVERSAL,
-    PACKAGE_REGISTRY_ID, PACKAGE_INFO, Q4_N_STATES,
+    GAMMA_UNIVERSAL,
+    PACKAGE_INFO,
+    PACKAGE_REGISTRY_ID,
+    SIGMA_UTAC,
 )
+from .duality_relation import DualityRelation
+from .lagrangian_bridge import LagrangianBridge
+from .network_routing import SAVRouter
+from .q4_sav_map import Q4EntropyState, Q4SAVMap
+from .variational import VariationalSolver
+from .volume_entropy import VolumeEntropy
 
 
 @dataclass

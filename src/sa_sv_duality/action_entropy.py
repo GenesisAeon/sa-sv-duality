@@ -109,8 +109,9 @@ class ActionEntropy:
         rates = np.array(
             [self.entropy_rate(float(h), float(g)) for h, g in zip(H_arr, g_arr, strict=False)]
         )
-        _trapz = getattr(np, "trapezoid", None) or np.trapz
-        return float(_trapz(rates, t_arr))
+        from scipy.integrate import trapezoid
+
+        return float(trapezoid(rates, t_arr))
 
     # ------------------------------------------------------------------
     # Trajectory generation (UTAC ODE, simple Euler)

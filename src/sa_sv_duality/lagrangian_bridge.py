@@ -89,7 +89,7 @@ class LagrangianBridge:
         if any(x < 0 for x in (C, R, E, P)):
             raise ValueError("CREP components must be non-negative")
         product = C * R * E * P
-        return product ** 0.25
+        return float(product ** 0.25)
 
     # ------------------------------------------------------------------
     # Kinetic minus potential
@@ -171,4 +171,5 @@ class LagrangianBridge:
             0.0,
         )
 
-        return d2H - dL_dH
+        result: NDArray[np.float64] = np.asarray(d2H - dL_dH, dtype=np.float64)
+        return result

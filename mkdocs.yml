@@ -1,23 +1,23 @@
-site_name: Diamond Setup
-site_description: Universal Python project scaffold — generate professional project skeletons in seconds
-site_author: GenesisAeon
-repo_url: https://github.com/GenesisAeon/diamond-setup
-repo_name: GenesisAeon/diamond-setup
+site_name: sa-sv-duality
+site_description: S_A / S_V Entropy Duality -- GenesisAeon Package 36
+site_author: Johann Roemer - MOR Research Collective
+repo_url: https://github.com/GenesisAeon/sa-sv-duality
+repo_name: GenesisAeon/sa-sv-duality
 
 theme:
   name: material
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
-      accent: indigo
+      primary: deep-purple
+      accent: amber
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: deep-purple
+      accent: amber
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -41,3 +41,4 @@ nav:
   - Home: index.md
   - CLI Reference: cli.md
   - Templates: templates.md
+  - Zenodo: zenodo.md

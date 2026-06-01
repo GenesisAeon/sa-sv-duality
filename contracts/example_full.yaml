@@ -1,37 +1,57 @@
-# Vollständige Q4 Runtime-Deklaration
-# Alle Layer aktiv: Geometry, State-Maschine, NATS-Kopplung.
-# Als Referenz für genesis-os, sigillin, unified-mandala.
+# Q4 Runtime Declaration -- sa-sv-duality (GenesisAeon Package 36)
+# Full configuration: geometry, state machine, NATS coupling, S_A/S_V layer.
 
 runtime:
   version: "1.0"
   protocol: q4
 
+  package:
+    id: 36
+    name: "sa-sv-duality"
+    domain: "mathematical-physics"
+    scale: "foundational"
+    zenodo: "10.5281/zenodo.17472834"
+
   layers:
 
     geometry:
       enabled: true
-      phi_scaling: true   # Faktor 1.6 ≈ Φ (Engineering-Näherung, Fehler < 0.2%)
+      phi_scaling: true   # factor 1.6 ~ Phi (error < 0.2%)
 
     state:
       enabled: true
-      bits: 4             # 4-Bit Q4-Zustandsraum
-      states: 16          # log₂(16) = 4 Bit — 16 Zustände, NICHT 16 Bit
+      bits: 4             # 4-bit Q4 state space
+      states: 16          # 16 states (not 16 bits)
       thresholds:
-        C: 0.5            # Kohärenz-Schwellenwert (Standard aus LeChat-Analyse)
-        R: 0.6            # Resonanz-Schwellenwert
-        E: 0.7            # Emergenz-Schwellenwert
-        P: 0.8            # Poetik-Schwellenwert
+        C: 0.5            # Coherence threshold
+        R: 0.6            # Resonance threshold
+        E: 0.7            # Entropy coupling threshold
+        P: 0.8            # Productivity threshold
+
+    entropy:
+      enabled: true
+      S_A:
+        method: "utac_integral"   # integral sigma_s dt
+        gamma: 0.251              # CREP triple-universality
+        sigma: 2.2                # UTAC coupling parameter
+      S_V:
+        method: "histogram_kde"   # Shannon entropy of H(t) distribution
+        n_bins: 64
+      duality:
+        conserved: true           # S_A * S_V = const along optimal path
+        lambda_variational: 1.0   # delta(S_A - lambda*S_V) = 0
 
     coupling:
       enabled: true
       transport: nats
-      gray_code: true     # Nur Gray-Code-Übergänge erlaubt (Hamming-Distanz = 1)
+      gray_code: true     # only Hamming-distance-1 transitions
       subjects:
-        - "ga.frame."     # Q4-Zustände: ga.frame.0000 .. ga.frame.1111
-        - "ga.sigillin."  # Sigillin-Snapshots mit SHA256-ID
-        - "ga.agent."     # Agent-Zustandsupdates (coordinator, transform, …)
-        - "ga.resonance." # CREP-Float-Metrik-Updates
+        - "ga.frame."      # Q4 states: ga.frame.0000 .. ga.frame.1111
+        - "ga.sigillin."   # Sigillin snapshots with SHA256 ID
+        - "ga.agent."      # agent state updates
+        - "ga.resonance."  # CREP float metric updates
+        - "ga.entropy."    # S_A/S_V duality metrics
 
   speculative:
-    efc_coupling: false         # Ephaptische Frame-Kopplung: AUS (nur efc-research-module)
-    consciousness_model: false  # Niemals in Produktion
+    efc_coupling: false         # ephaptic frame coupling: OFF
+    consciousness_model: false  # never in production

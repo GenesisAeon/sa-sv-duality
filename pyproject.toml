@@ -1,6 +1,6 @@
 [project]
 name = "sa-sv-duality"
-version = "0.1.0"
+version = "1.0.0"
 description = "S_A / S_V Entropy Duality - GenesisAeon Package 36 - Standalone Foundational Module"
 readme = "README.md"
 license = { text = "MIT" }

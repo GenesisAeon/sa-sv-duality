@@ -35,7 +35,7 @@ this is the deepest formulation of the GenesisAeon dynamics.
 
 ---
 
-## Install
+## Installation
 
 ```bash
 pip install sa-sv-duality
@@ -43,7 +43,9 @@ pip install sa-sv-duality
 uv tool install sa-sv-duality
 ```
 
-## CLI
+## Usage
+
+### CLI
 
 ```bash
 # Run a full S_A/S_V cycle (Gamma = 0.251, sigma = 2.2)
@@ -63,7 +65,7 @@ sav benchmark
 sav benchmark --fast
 ```
 
-## Python API
+### Python API
 
 ```python
 from sa_sv_duality import SAVDuality, ActionEntropy, VolumeEntropy, Q4SAVMap
@@ -156,6 +158,13 @@ cd sa-sv-duality
 uv sync --dev
 uv run pytest
 ```
+
+## Citation
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER)
+
+DOI will be assigned automatically on first GitHub Release once
+Zenodo–GitHub integration is enabled for this repo.
 
 ---
 

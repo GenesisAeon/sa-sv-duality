@@ -21,6 +21,13 @@ from typing import Any
 
 import yaml
 
+# Windows consoles default to a non-UTF-8 codepage, which breaks the ✓/✗
+# markers below with UnicodeEncodeError. Force UTF-8 stdout/stderr so the
+# script behaves the same on Windows as it already does in Linux CI.
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
+    sys.stderr.reconfigure(encoding="utf-8")
+
 # Pfad relativ zu diesem Skript
 _REPO_ROOT = Path(__file__).parent.parent
 _SCHEMA_PATH = _REPO_ROOT / "contracts" / "runtime.schema.yaml"

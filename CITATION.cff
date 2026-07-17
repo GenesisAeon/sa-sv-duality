@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "sa-sv-duality"
+version: "1.0.0"
+date-released: "2026-06-17"
+authors:
+  - name: "Johann Roemer - MOR Research Collective"
+repository-code: "https://github.com/GenesisAeon/sa-sv-duality"
+license: MIT
+abstract: "S_A / S_V Entropy Duality - GenesisAeon Package 36 - Standalone Foundational Module"
+keywords:
+  - GenesisAeon
+  - UTAC
+  - CREP
+  - open-science
+  - entropy
+  - duality
+  - mathematical-physics

@@ -27,5 +27,5 @@ PACKAGE_INFO: dict[str, object] = {
     "name": "sa-sv-duality",
     "domain": "mathematical-physics",
     "scale": "foundational",
-    "zenodo": "10.5281/zenodo.17472834",
+    "zenodo": "10.5281/zenodo.20842509",
 }

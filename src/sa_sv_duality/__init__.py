@@ -14,7 +14,7 @@ from __future__ import annotations
 
 __version__ = "0.1.0"
 __author__ = "Johann Römer · MOR Research Collective"
-__zenodo__ = "10.5281/zenodo.17472834"
+__zenodo__ = "10.5281/zenodo.20842509"
 
 from .action_entropy import ActionEntropy
 from .duality_relation import DualityRelation

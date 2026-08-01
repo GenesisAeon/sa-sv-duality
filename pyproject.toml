@@ -45,7 +45,7 @@ sav = "sa_sv_duality.cli:app"
 [project.urls]
 Homepage = "https://github.com/GenesisAeon/sa-sv-duality"
 Repository = "https://github.com/GenesisAeon/sa-sv-duality"
-Zenodo = "https://doi.org/10.5281/zenodo.17472834"
+Zenodo = "https://doi.org/10.5281/zenodo.20842509"
 
 [build-system]
 requires = ["hatchling"]

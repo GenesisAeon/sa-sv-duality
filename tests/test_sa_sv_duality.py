@@ -300,7 +300,7 @@ def test_system_zenodo_record():
     system.run_cycle(duration_years=3.0)
     record = system.to_zenodo_record()
     assert record["package"] == 36
-    assert record["zenodo_doi"] == "10.5281/zenodo.17472834"
+    assert record["zenodo_doi"] == "10.5281/zenodo.20842509"
 
 
 def test_system_duality_constant():

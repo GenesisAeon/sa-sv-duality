@@ -12,7 +12,7 @@ Reference: GenesisAeon Feldtheorie Preprint, DOI 10.5281/zenodo.17472834
 
 from __future__ import annotations
 
-__version__ = "0.1.0"
+__version__ = "1.0.1"
 __author__ = "Johann Römer · MOR Research Collective"
 __zenodo__ = "10.5281/zenodo.20842509"
 
